@@ -78,6 +78,9 @@
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . textile-mode))
 
+(require 'protobuf-mode)
+
+
 (iswitchb-mode 1)
 (setq iswitchb-buffer-ignore '("^\\*Messages"))
 
