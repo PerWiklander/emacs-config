@@ -68,6 +68,7 @@
 (require 'php-mode)
 (require 'sass-mode)
 (require 'scss-mode)
+(add-to-list 'auto-mode-alist '("\\.less$" . scss-mode))
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (require 'asp-mode)
