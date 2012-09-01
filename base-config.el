@@ -5,77 +5,61 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(auto-compression-mode t nil (jka-compr))
- '(case-fold-search t)
- '(current-language-environment "English")
- '(fringe-mode (quote (nil . 0)) nil (fringe))
- '(global-font-lock-mode t nil (font-lock))
+ '(aquamacs-additional-fontsets nil t)
+ '(aquamacs-customization-version-id 215 t)
+ '(aquamacs-tool-bar-user-customization (quote ((16777249 new-file open-file recent-files save-buffer aquamacs-print nil undo redo cut copy paste isearch-forward nil customize help))) t)
+ '(current-language-environment "UTF-8")
+ '(default-frame-alist (quote ((cursor-type . box) (internal-border-width . 0) (modeline . t) (fringe) (mouse-color . "black") (background-mode . light) (menu-bar-lines . 1) (right-fringe . 0) (left-fringe . 14) (cursor-color . "Red") (background-color . "White") (foreground-color . "Black") (font . "-apple-Monaco-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1") (fontsize . 0) (font-backend ns) (vertical-scroll-bars) (tool-bar-lines . 0))))
+ '(global-hl-line-mode t)
  '(indicate-buffer-boundaries (quote left))
  '(indicate-empty-lines t)
- '(paren-match-face (quote paren-face-match-light))
- '(paren-sexp-mode t)
- '(save-place t nil (saveplace))
+ '(ns-tool-bar-display-mode (quote both) t)
+ '(ns-tool-bar-size-mode (quote regular) t)
  '(scroll-bar-mode nil)
  '(size-indication-mode t)
- '(text-mode-hook (quote (text-mode-hook-identify)))
- '(transient-mark-mode t)
- '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
-
-; Syntax highlighting. Dark background.
-; Insert this in custom.el. Then restart XEmacs.
-
+ '(toolbar-mode nil t)
+ '(tooltip-mode nil)
+ '(visual-line-mode nil t)
+;; '(global-linum-mode t)
+)
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "white" :background "black" :size "13" :family "Monaco"))))
- '(cperl-array-face ((t (:foreground "orangered" :bold t))))
- '(cperl-hash-face ((t (:foreground "Red" :bold t))))
- '(cperl-nonoverridable-face ((t (:foreground "orange" :bold t))))
- '(custom-button-face ((t (:bold t :foreground "#3fdfcf"))) t)
- '(custom-group-tag-face ((t (:underline t :foreground "blue"))) t)
- '(custom-saved-face ((t (:underline t :foreground "orange"))) t)
- '(custom-state-face ((t (:foreground "green3"))) t)
- '(custom-variable-button-face ((t (:bold t :underline t :foreground "white"))) t)
- '(dired-face-permissions ((t (:foreground "green"))))
- '(font-latex-bold-face ((((class color) (background light)) (:bold t))))
- '(font-latex-italic-face ((((class color) (background light)) (:italic t))))
- '(font-latex-math-face ((((class color) (background light)) (:foreground "green3"))))
- '(font-latex-sedate-face ((((class color) (background light)) (:foreground "gold"))))
- '(font-lock-comment-face ((t (:foreground "orange3"))))
- '(font-lock-doc-string-face ((t (:foreground "Wheat3"))))
- '(font-lock-function-name-face ((t (:foreground "lightblue" :bold t))))
- '(font-lock-keyword-face ((t (:foreground "gold"))))
- '(font-lock-preprocessor-face ((t (:foreground "red" :bold t))))
- '(font-lock-reference-face ((t (:foreground "orangered"))))
- '(font-lock-string-face ((t (:foreground "green3"))))
- '(font-lock-type-face ((t (:foreground "#886fff" :bold t))))
- '(font-lock-variable-name-face ((t (:foreground "yellow" :bold t))))
- '(font-lock-warning-face ((t (:foreground "Violetred" :bold t))))
- '(highlight ((t (:background "#333333"))))
- '(isearch ((t (:foreground "red" :background "white"))))
- '(list-mode-item-selected ((t (:foreground "green"))) t)
- '(message-cited-text ((t (:bold t :italic nil))))
- '(secondary-selection ((t (:foreground "white" :background "red"))))
- '(text-cursor ((t (:foreground "black" :background "green"))) t)
- '(zmacs-region ((t (:background "RoyalBlue"))) t))
+ )
 
-(setq magic-mode-alist nil)
-
+;; Global settings
+(setq-default css-indent-offset 2)
+(setq-default css-indent-offset 2)
+(setq-default custom-buffer-indent 2)
+(setq-default js-enabled-frameworks (quote (javascript mochikit prototype dojo extjs merrillpress)))
+(setq-default js-indent-level 2)
+(setq-default standard-indent 2)
 (setq-default indent-tabs-mode nil)
 
+(iswitchb-mode 1)
+(setq iswitchb-buffer-ignore '("^\\*Messages"))
+
+;; Color theme
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-solarized-dark)))
+
+;; Editor modes
 (require 'php-mode)
+
 (require 'sass-mode)
 (require 'scss-mode)
 (add-to-list 'auto-mode-alist '("\\.less$" . scss-mode))
+
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 (require 'asp-mode)
 (add-to-list 'auto-mode-alist '("\\.asp$" . asp-mode))
-
-(require 'magit)
-(autoload 'magit-status "magit" nil t)
 
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
@@ -88,12 +72,13 @@
 (require 'scala-mode-auto)
 
 (require 'sws-mode)
-(require 'jade-mode)    
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
+
+(require 'jade-mode)
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
-(iswitchb-mode 1)
-(setq iswitchb-buffer-ignore '("^\\*Messages"))
+(require 'magit)
+(autoload 'magit-status "magit" nil t)
 
 (defun duplicate-line (arg)
   "Duplicate current line, leaving point in lower line."
