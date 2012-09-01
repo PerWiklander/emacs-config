@@ -84,6 +84,7 @@
 
 (require 'protobuf-mode)
 
+(require 'scala-mode-auto)
 
 (iswitchb-mode 1)
 (setq iswitchb-buffer-ignore '("^\\*Messages"))
