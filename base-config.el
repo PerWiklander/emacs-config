@@ -63,6 +63,8 @@
 
 (setq magic-mode-alist nil)
 
+(setq-default indent-tabs-mode nil)
+
 (require 'php-mode)
 (require 'sass-mode)
 (require 'scss-mode)
