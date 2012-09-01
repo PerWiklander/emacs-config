@@ -78,7 +78,9 @@
 
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
-(add-to-list 'auto-mode-alist '("\\.txt\\'" . textile-mode))
+
+(require 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
 
 (require 'protobuf-mode)
 
